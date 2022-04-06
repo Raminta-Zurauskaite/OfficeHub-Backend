@@ -2,7 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
 }
 
 group = 'com.example'
@@ -10,6 +9,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
+	webRunner
+
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -30,8 +31,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
-	compileOnly 'com.github.jsimone:webapp-runner:9.0.27.1'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	webRunner 'com.heroku:webapp-runner:9.0.52.1'
+	//webRunner 'com.github.jsimone:webapp-runner:9.0.27.1'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -39,17 +41,29 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-task stage() {
-	dependsOn clean, bootWar
+/*task stage() {
+	dependsOn clean, war
 }
 
-bootWar.mustRunAfter clean
+war.mustRunAfter clean
 
 task copyToLib(type: Copy) {
+	println 'TestA'
 	into "$buildDir/server"
-	from(configurations.providedRuntime) {
+	from(configurations.webRunner) {
 		include "webapp-runner*"
 	}
 }
 
-stage.dependsOn(copyToLib)
+task showMeCache doLast() {
+	println 'testb'
+	configurations.compileClasspath.each { println it }
+}
+
+task test1(){
+	println 'testc'
+}
+
+test1.dependsOn(showMeCache)
+
+stage.dependsOn(copyToLib)*/
