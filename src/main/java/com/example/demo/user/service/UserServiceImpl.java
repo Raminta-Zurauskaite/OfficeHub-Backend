@@ -22,4 +22,10 @@ public class UserServiceImpl implements UserService{
     public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
     }
+
+    @Override
+    public String deleteUser(Long user_id){
+        userRepository.deleteById(user_id);
+        return "Deleted";
+    }
 }
