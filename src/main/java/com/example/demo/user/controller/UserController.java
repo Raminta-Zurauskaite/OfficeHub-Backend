@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/user")
 public class UserController {
 
     @Autowired
