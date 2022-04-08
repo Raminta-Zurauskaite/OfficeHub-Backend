@@ -8,4 +8,6 @@ public interface UserService {
     UserEntity saveUserEntity(UserEntity userEntity);
 
     List<UserEntity> getAllUsers();
+
+    String deleteUser(Long user_id);
 }
