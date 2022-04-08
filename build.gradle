@@ -6,9 +6,11 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
+	webRunner
+
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -19,18 +21,50 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.5.4'
-	implementation 'org.flywaydb:flyway-core'
+	//implementation 'org.flywaydb:flyway-core'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql'
+	webRunner 'com.heroku:webapp-runner:9.0.52.1'
+	webRunner 'com.github.jsimone:webapp-runner:9.0.27.1'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+/*task stage() {
+	dependsOn clean, war
+}
+
+war.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+	println 'TestA'
+	into "$buildDir/server"
+	from(configurations.webRunner) {
+		include "webapp-runner*"
+	}
+}
+
+task showMeCache doLast() {
+	println 'testb'
+	configurations.compileClasspath.each { println it }
+}
+
+task test1(){
+	println 'testc'
+}
+
+test1.dependsOn(showMeCache)
+
+stage.dependsOn(copyToLib)*/
