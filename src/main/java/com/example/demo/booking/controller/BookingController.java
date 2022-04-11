@@ -28,10 +28,10 @@ public class BookingController {
         return new ResponseEntity(bookingService.saveBookingEntity(bookingEntity), HttpStatus.CREATED);
     }
 
-    /*@GetMapping("/{floor_id}/date/{booking_date}")
+    @GetMapping("/{floor_id}/date/{booking_date}")
     public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Long floor_id, @PathVariable Date booking_date) {
         return bookingService.getAllFloorAndDateBookings(floor_id, booking_date).stream().map(p -> deskService.getDeskNumberById(p.getDesk_id())).collect(Collectors.toList());
-    }*/
+    }
 
     @GetMapping("/{user_id}")
     public List<BookingEntity> fetchAllUserBookings(@PathVariable Long user_id){
