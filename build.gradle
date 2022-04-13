@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
-	//webRunner
+	webRunner
 
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -32,7 +32,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
-	//webRunner 'com.heroku:webapp-runner:9.0.52.1'
+	webRunner 'com.heroku:webapp-runner:9.0.52.1'
 	//webRunner 'com.github.jsimone:webapp-runner:9.0.27.1'
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
