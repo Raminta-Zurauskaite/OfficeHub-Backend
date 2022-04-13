@@ -17,12 +17,15 @@ public class BuildingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long building_id;
+    private Integer buildingID;
 
-    @Column(name = "city_id", length = 5, nullable = false)
-    private Long city_id;
+    @Column(name = "cityID", length = 5, nullable = false)
+    private Integer cityID;
 
     @Column(name = "address", length = 100, nullable = false)
     private String address;
+
+    @Column(name = "buildingName", length = 100, nullable = false)
+    private String buildingName;
 
 }

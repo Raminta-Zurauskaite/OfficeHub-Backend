@@ -10,6 +10,6 @@ public interface CityService {
 
     List<CityEntity> getAllCities();
 
-    String deleteCity(Long city_id);
+    String deleteCity(Integer cityID);
 
 }

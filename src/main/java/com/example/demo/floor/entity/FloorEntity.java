@@ -17,11 +17,11 @@ public class FloorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long floor_id;
+    private Integer floorID;
 
-    @Column(name = "building_id", length = 5, nullable = false)
-    private Long building_id;
+    @Column(name = "buildingID", length = 5, nullable = false)
+    private Integer buildingID;
 
     @Column(name = "floor_number", length = 5, nullable = false)
-    private Long floor_number;
+    private Integer floor_number;
 }

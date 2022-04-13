@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,23 +27,23 @@ public class BookingController {
         return new ResponseEntity(bookingService.saveBookingEntity(bookingEntity), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{floor_id}/date/{booking_date}")
-    public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Long floor_id, @PathVariable Date booking_date) {
-        return bookingService.getAllFloorAndDateBookings(floor_id, booking_date).stream().map(p -> deskService.getDeskNumberById(p.getDesk_id())).collect(Collectors.toList());
+    @GetMapping("/{floorID}/date/{bookingDate}")
+    public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Integer floorID, @PathVariable Date bookingDate) {
+        return bookingService.getAllFloorAndDateBookings(floorID, bookingDate).stream().map(p -> deskService.getDeskNumberById(p.getDeskID())).collect(Collectors.toList());
     }
 
-    @GetMapping("/{user_id}")
-    public List<BookingEntity> fetchAllUserBookings(@PathVariable Long user_id){
-        return bookingService.getAllUserBookings(user_id).stream().map(p -> new BookingEntity(p.getBooking_id(), user_id, p.getCity_id(), p.getBuilding_id(), p.getFloor_id(), p.getDesk_id(), p.getBooking_date())).collect(Collectors.toList());
+    @GetMapping("/{userID}")
+    public List<BookingEntity> fetchAllUserBookings(@PathVariable Integer userID){
+        return bookingService.getAllUserBookings(userID).stream().map(p -> new BookingEntity(p.getBooking_id(), userID, p.getCityID(), p.getBuildingID(), p.getFloorID(), p.getDeskID(), p.getBookingDate())).collect(Collectors.toList());
     }
 
     @GetMapping
     public List<BookingEntity> fetchAllBookings() {
-        return bookingService.getAllBookings().stream().map(p -> new BookingEntity(p.getBooking_id(), p.getUser_id(), p.getCity_id(), p.getBuilding_id(), p.getFloor_id(), p.getDesk_id(), p.getBooking_date())).collect(Collectors.toList());
+        return bookingService.getAllBookings().stream().map(p -> new BookingEntity(p.getBooking_id(), p.getUserID(), p.getCityID(), p.getBuildingID(), p.getFloorID(), p.getDeskID(), p.getBookingDate())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{booking_id}")
-    public ResponseEntity deleteBooking(@PathVariable Long booking_id){
-        return new ResponseEntity(bookingService.deleteBooking(booking_id), HttpStatus.OK);
+    @DeleteMapping("/{bookingID}")
+    public ResponseEntity deleteBooking(@PathVariable Integer bookingID){
+        return new ResponseEntity(bookingService.deleteBooking(bookingID), HttpStatus.OK);
     }
 }

@@ -9,11 +9,11 @@ public interface BookingService {
 
     BookingEntity saveBookingEntity(BookingEntity bookingEntity);
 
-    List<BookingEntity> getAllFloorAndDateBookings(Long floor_id, Date booking_date);
+    List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, Date bookingDate);
 
-    List<BookingEntity> getAllUserBookings(Long user_id);
+    List<BookingEntity> getAllUserBookings(Integer userID);
 
     List<BookingEntity> getAllBookings();
 
-    String deleteBooking(Long booking_id);
+    String deleteBooking(Integer bookingID);
 }

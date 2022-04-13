@@ -8,9 +8,9 @@ public interface FloorService {
 
     FloorEntity saveFloorEntity(FloorEntity floorEntity);
 
-    List<FloorEntity> getAllBuildingFloors(Long building_id);
+    List<FloorEntity> getAllBuildingFloors(Integer buildingID);
 
     List<FloorEntity> getAllFloors();
 
-    String deleteFloor(Long floor_id);
+    String deleteFloor(Integer floorID);
 }

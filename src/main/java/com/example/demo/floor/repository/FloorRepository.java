@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface FloorRepository extends JpaRepository<FloorEntity, Long> {
-    List<FloorEntity> findAllByBuilding_id(Long building_id);
+public interface FloorRepository extends JpaRepository<FloorEntity, Integer> {
+    List<FloorEntity> findAllByBuildingID(Integer building_id);
 }

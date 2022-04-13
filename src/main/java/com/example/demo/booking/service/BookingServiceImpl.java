@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class BookingServiceImpl implements BookingService{
 
+    private final BookingRepository bookingRepository;
+
     @Autowired
-    private BookingRepository bookingRepository;
+    public BookingServiceImpl(BookingRepository bookingRepository) {
+        this.bookingRepository = bookingRepository;
+    }
 
     @Override
     public BookingEntity saveBookingEntity(BookingEntity bookingEntity){
@@ -20,13 +24,13 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public List<BookingEntity> getAllFloorAndDateBookings(Long floor_id, Date booking_date){
-        return bookingRepository.findAllByFloor_idAndBooking_date(floor_id, booking_date);
+    public List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, Date bookingDate){
+        return bookingRepository.findAllByFloorIDAndAndBookingDate(floorID, bookingDate);
     }
 
     @Override
-    public List<BookingEntity> getAllUserBookings(Long user_id){
-        return bookingRepository.findAllByUser_id(user_id);
+    public List<BookingEntity> getAllUserBookings(Integer userID){
+        return bookingRepository.findAllByUserID(userID);
     }
 
     @Override
@@ -35,8 +39,8 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public String deleteBooking(Long booking_id){
-        bookingRepository.deleteById(booking_id);
+    public String deleteBooking(Integer bookingID){
+        bookingRepository.deleteById(bookingID);
         return "Deleted";
     }
 }
