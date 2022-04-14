@@ -28,7 +28,7 @@ public class BookingController {
     }
 
     @GetMapping("/{floorID}/date/{bookingDate}")
-    public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Integer floorID, @PathVariable Date bookingDate) {
+    public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Integer floorID, @PathVariable String bookingDate) {
         return bookingService.getAllFloorAndDateBookings(floorID, bookingDate).stream().map(p -> deskService.getDeskNumberById(p.getDeskID())).collect(Collectors.toList());
     }
 

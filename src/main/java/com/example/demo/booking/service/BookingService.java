@@ -9,7 +9,7 @@ public interface BookingService {
 
     BookingEntity saveBookingEntity(BookingEntity bookingEntity);
 
-    List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, Date bookingDate);
+    List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, String bookingDate);
 
     List<BookingEntity> getAllUserBookings(Integer userID);
 

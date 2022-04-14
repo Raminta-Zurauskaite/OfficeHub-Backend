@@ -13,5 +13,5 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Integer>
     List<BookingEntity> findAllByUserID(Integer userID);
 
     @Query("select DISTINCT be from BookingEntity be where be.floorID = ?1 and be.bookingDate = ?2")
-    List<BookingEntity> findAllByFloorIDAndAndBookingDate(Integer floorID, Date bookingDate);
+    List<BookingEntity> findAllByFloorIDAndAndBookingDate(Integer floorID, String bookingDate);
 }

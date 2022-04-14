@@ -36,6 +36,6 @@ public class BookingEntity {
     private Integer deskID;
 
     @Column(name = "bookingDate", length = 15, nullable = false)
-    private Date bookingDate;
+    private String bookingDate;
 
 }

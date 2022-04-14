@@ -24,7 +24,7 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, Date bookingDate){
+    public List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, String bookingDate){
         return bookingRepository.findAllByFloorIDAndAndBookingDate(floorID, bookingDate);
     }
 
