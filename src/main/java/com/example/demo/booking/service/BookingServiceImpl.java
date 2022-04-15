@@ -1,7 +1,9 @@
 package com.example.demo.booking.service;
 
 import com.example.demo.booking.entity.BookingEntity;
+import com.example.demo.booking.entity.UserBookings;
 import com.example.demo.booking.repository.BookingRepository;
+import com.example.demo.booking.repository.UserBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,14 @@ import java.util.List;
 @Service
 public class BookingServiceImpl implements BookingService{
 
+    private final UserBookingRepository userBookingRepository;
+
     private final BookingRepository bookingRepository;
 
     @Autowired
-    public BookingServiceImpl(BookingRepository bookingRepository) {
+    public BookingServiceImpl(BookingRepository bookingRepository, UserBookingRepository userBookingRepository) {
         this.bookingRepository = bookingRepository;
+        this.userBookingRepository = userBookingRepository;
     }
 
     @Override
@@ -29,8 +34,8 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public List<BookingEntity> getAllUserBookings(Integer userID){
-        return bookingRepository.findAllByUserID(userID);
+    public List<UserBookings> findAllByUserID(Integer userID){
+        return userBookingRepository.findAllByUserID(userID);
     }
 
     @Override

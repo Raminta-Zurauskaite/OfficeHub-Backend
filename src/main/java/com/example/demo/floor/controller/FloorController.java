@@ -24,12 +24,12 @@ public class FloorController {
 
     @GetMapping("/{buildingID}")
     public List<FloorEntity> fetchBuildingFloors(@PathVariable Integer buildingID){
-        return floorService.getAllBuildingFloors(buildingID).stream().map(p -> new FloorEntity(p.getFloorID(), buildingID, p.getFloor_number())).collect(Collectors.toList());
+        return floorService.getAllBuildingFloors(buildingID).stream().map(p -> new FloorEntity(p.getFloorID(), buildingID, p.getFloorName())).collect(Collectors.toList());
     }
 
     @GetMapping
     public List<FloorEntity> fetchAllFloors() {
-        return floorService.getAllFloors().stream().map(p -> new FloorEntity(p.getFloorID(), p.getBuildingID(), p.getFloor_number())).collect(Collectors.toList());
+        return floorService.getAllFloors().stream().map(p -> new FloorEntity(p.getFloorID(), p.getBuildingID(), p.getFloorName())).collect(Collectors.toList());
     }
 
     @DeleteMapping("/{floorID}")

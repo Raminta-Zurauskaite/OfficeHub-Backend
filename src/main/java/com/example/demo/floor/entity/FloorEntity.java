@@ -22,6 +22,6 @@ public class FloorEntity {
     @Column(name = "buildingID", length = 5, nullable = false)
     private Integer buildingID;
 
-    @Column(name = "floor_number", length = 5, nullable = false)
-    private Integer floor_number;
+    @Column(name = "floorName", length = 5, nullable = false)
+    private String floorName;
 }

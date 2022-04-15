@@ -1,6 +1,7 @@
 package com.example.demo.booking.controller;
 
 import com.example.demo.booking.entity.BookingEntity;
+import com.example.demo.booking.entity.UserBookings;
 import com.example.demo.booking.service.BookingService;
 import com.example.demo.desk.service.DeskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class BookingController {
     }
 
     @GetMapping("/{userID}")
-    public List<BookingEntity> fetchAllUserBookings(@PathVariable Integer userID){
-        return bookingService.getAllUserBookings(userID).stream().map(p -> new BookingEntity(p.getBooking_id(), userID, p.getCityID(), p.getBuildingID(), p.getFloorID(), p.getDeskID(), p.getBookingDate())).collect(Collectors.toList());
+    public List<UserBookings> fetchAllUserBookings(@PathVariable Integer userID){
+        return bookingService.findAllByUserID(userID).stream().map(p -> new UserBookings(p.getBooking_id(), p.getUserid(), p.getDesk_number(), p.getFloor_name(), p.getBuilding_name(), p.getCity_name(), p.getBooking_date())).collect(Collectors.toList());
     }
 
     @GetMapping
