@@ -32,8 +32,8 @@ public class DeskController {
         return deskService.getAllDesks().stream().map(p -> new DeskEntity(p.getDeskID(), p.getFloorID(), p.getDesk_number())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{floorID}")
-    public ResponseEntity deleteDesk(@PathVariable Integer floorID){
-        return new ResponseEntity(deskService.deleteDesk(floorID), HttpStatus.OK);
+    @DeleteMapping("/{deskID}")
+    public ResponseEntity deleteDesk(@PathVariable Integer deskID){
+        return new ResponseEntity(deskService.deleteDesk(deskID), HttpStatus.OK);
     }
 }
