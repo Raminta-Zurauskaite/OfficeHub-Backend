@@ -19,7 +19,7 @@ public class BuildingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer buildingID;
 
-    @Column(name = "cityID", length = 5, nullable = false)
+    @Column(name = "cityID", length = 10, nullable = false)
     private Integer cityID;
 
     @Column(name = "address", length = 100, nullable = false)

@@ -19,9 +19,9 @@ public class CityEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cityID;
 
-    @Column(name = "city_name", length = 20, nullable = false)
+    @Column(name = "city_name", length = 100, nullable = false)
     private String city_name;
 
-    @Column(name = "country", length = 20, nullable = false)
+    @Column(name = "country", length = 100, nullable = false)
     private String country;
 }

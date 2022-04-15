@@ -19,9 +19,9 @@ public class DeskEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer deskID;
 
-    @Column(name = "floorID", length = 5, nullable = false)
+    @Column(name = "floorID", length = 10, nullable = false)
     private Integer floorID;
 
-    @Column(name = "desk_number", length = 5, nullable = false)
+    @Column(name = "desk_number", length = 10, nullable = false)
     private Integer desk_number;
 }

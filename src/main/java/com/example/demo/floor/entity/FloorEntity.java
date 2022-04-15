@@ -19,9 +19,9 @@ public class FloorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer floorID;
 
-    @Column(name = "buildingID", length = 5, nullable = false)
+    @Column(name = "buildingID", length = 10, nullable = false)
     private Integer buildingID;
 
-    @Column(name = "floorName", length = 5, nullable = false)
+    @Column(name = "floorName", length = 100, nullable = false)
     private String floorName;
 }

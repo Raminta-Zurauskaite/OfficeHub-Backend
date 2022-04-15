@@ -18,15 +18,15 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userID;
 
-    @Column(name = "name", length = 20, nullable = false)
+    @Column(name = "name", length = 100, nullable = false)
     private String name;
 
-    @Column(name = "surname", length = 20, nullable = false)
+    @Column(name = "surname", length = 100, nullable = false)
     private String surname;
 
-    @Column(name = "email", length = 50, nullable = false)
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "password", length = 20, nullable = false)
+    @Column(name = "password", length = 50, nullable = false)
     private String password;
 }
