@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "'bookings'")
-@Subselect("select uuid() as booking_id, b.* from bookings b")
+@Subselect("select b.* from bookings b")
 public class UserBookings implements Serializable {
 
     @Id
