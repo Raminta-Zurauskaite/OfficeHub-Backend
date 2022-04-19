@@ -23,16 +23,19 @@ public class BookingController {
     @Autowired
     private DeskService deskService;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity saveFloor(@RequestBody BookingEntity bookingEntity){
         return new ResponseEntity(bookingService.saveBookingEntity(bookingEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/{floorID}/date/{bookingDate}")
     public List<Integer> fetchAllFloorAndDateBookings(@PathVariable Integer floorID, @PathVariable String bookingDate) {
         return bookingService.getAllFloorAndDateBookings(floorID, bookingDate).stream().map(p -> deskService.getDeskNumberById(p.getDeskID())).collect(Collectors.toList());
     }
 
+    @CrossOrigin
     @GetMapping("/{userID}")
     public List<UserBookings> fetchAllUserBookings(@PathVariable Integer userID){
         return bookingService.findAllByUserID(userID).stream().map(p -> new UserBookings(p.getBooking_id(), p.getUserid(), p.getDesk_number(), p.getFloor_name(), p.getBuilding_name(), p.getCity_name(), p.getBooking_date())).collect(Collectors.toList());
@@ -43,6 +46,7 @@ public class BookingController {
         return bookingService.getAllBookings().stream().map(p -> new BookingEntity(p.getBooking_id(), p.getUserID(), p.getCityID(), p.getBuildingID(), p.getFloorID(), p.getDeskID(), p.getBookingDate())).collect(Collectors.toList());
     }
 
+    @CrossOrigin
     @DeleteMapping("/{bookingID}")
     public ResponseEntity deleteBooking(@PathVariable Integer bookingID){
         return new ResponseEntity(bookingService.deleteBooking(bookingID), HttpStatus.OK);

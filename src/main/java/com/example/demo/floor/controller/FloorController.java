@@ -22,6 +22,7 @@ public class FloorController {
         return new ResponseEntity(floorService.saveFloorEntity(floorEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/{buildingID}")
     public List<FloorEntity> fetchBuildingFloors(@PathVariable Integer buildingID){
         return floorService.getAllBuildingFloors(buildingID).stream().map(p -> new FloorEntity(p.getFloorID(), buildingID, p.getFloorName())).collect(Collectors.toList());
