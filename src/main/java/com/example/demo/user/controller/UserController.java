@@ -17,11 +17,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity saveUser(@RequestBody UserEntity userEntity) {
         return new ResponseEntity(userService.saveUserEntity(userEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping
     public List<UserEntity> fetchUsers() {
         return userService.getAllUsers().stream().map(p -> new UserEntity(p.getUserID(), p.getName(), p.getSurname(), p.getEmail(), p.getPassword())).collect(Collectors.toList());

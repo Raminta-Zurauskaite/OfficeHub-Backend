@@ -23,6 +23,7 @@ public class BuildingController {
         return new ResponseEntity(buildingService.saveBuildingEntity(buildingEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/{cityID}")
     public List<BuildingEntity> fetchCityBuildings(@PathVariable Integer cityID){
         return buildingService.getAllCityBuildings(cityID).stream().map(p -> new BuildingEntity(p.getBuildingID(), p.getCityID(), p.getAddress(), p.getBuildingName())).collect(Collectors.toList());

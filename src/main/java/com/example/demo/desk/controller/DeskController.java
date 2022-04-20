@@ -22,6 +22,7 @@ public class DeskController {
         return new ResponseEntity(deskService.saveDeskEntity(deskEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/{floorID}")
     public List<DeskEntity> fetchFloorDesks(@PathVariable Integer floorID){
         return deskService.getAllFloorDesks(floorID).stream().map(p -> new DeskEntity(p.getDeskID(), p.getFloorID(), p.getDesk_number())).collect(Collectors.toList());
