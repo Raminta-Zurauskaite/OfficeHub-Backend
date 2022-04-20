@@ -17,11 +17,11 @@ public class DeskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long desk_id;
+    private Integer deskID;
 
-    @Column(name = "floor_id", length = 5, nullable = false)
-    private Long floor_id;
+    @Column(name = "floorID", length = 10, nullable = false)
+    private Integer floorID;
 
-    @Column(name = "desk_number", length = 5, nullable = false)
+    @Column(name = "desk_number", length = 10, nullable = false)
     private Integer desk_number;
 }

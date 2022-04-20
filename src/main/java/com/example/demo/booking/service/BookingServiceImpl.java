@@ -1,7 +1,9 @@
 package com.example.demo.booking.service;
 
 import com.example.demo.booking.entity.BookingEntity;
+import com.example.demo.booking.entity.UserBookings;
 import com.example.demo.booking.repository.BookingRepository;
+import com.example.demo.booking.repository.UserBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,15 @@ import java.util.List;
 @Service
 public class BookingServiceImpl implements BookingService{
 
+    private final UserBookingRepository userBookingRepository;
+
+    private final BookingRepository bookingRepository;
+
     @Autowired
-    private BookingRepository bookingRepository;
+    public BookingServiceImpl(BookingRepository bookingRepository, UserBookingRepository userBookingRepository) {
+        this.bookingRepository = bookingRepository;
+        this.userBookingRepository = userBookingRepository;
+    }
 
     @Override
     public BookingEntity saveBookingEntity(BookingEntity bookingEntity){
@@ -20,13 +29,13 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public List<BookingEntity> getAllFloorAndDateBookings(Long floor_id, Date booking_date){
-        return bookingRepository.findAllByFloor_idAndBooking_date(floor_id, booking_date);
+    public List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, String bookingDate){
+        return bookingRepository.findAllByFloorIDAndAndBookingDate(floorID, bookingDate);
     }
 
     @Override
-    public List<BookingEntity> getAllUserBookings(Long user_id){
-        return bookingRepository.findAllByUser_id(user_id);
+    public List<UserBookings> findAllByUserID(Integer userID){
+        return userBookingRepository.findAllByUserID(userID);
     }
 
     @Override
@@ -35,8 +44,8 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
-    public String deleteBooking(Long booking_id){
-        bookingRepository.deleteById(booking_id);
+    public String deleteBooking(Integer bookingID){
+        bookingRepository.deleteById(bookingID);
         return "Deleted";
     }
 }

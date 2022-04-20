@@ -2,7 +2,6 @@ package com.example.demo.building.service;
 
 import com.example.demo.building.entity.BuildingEntity;
 import com.example.demo.building.repository.BuildingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @Service
 public class BuildingServiceImpl implements BuildingService{
 
-    @Autowired
-    private BuildingRepository buildingRepository;
+    private final BuildingRepository buildingRepository;
+
+    public BuildingServiceImpl(BuildingRepository buildingRepository) {
+        this.buildingRepository = buildingRepository;
+    }
 
     @Override
     public BuildingEntity saveBuildingEntity(BuildingEntity buildingEntity){
@@ -19,8 +21,8 @@ public class BuildingServiceImpl implements BuildingService{
     }
 
     @Override
-    public List<BuildingEntity> getAllCityBuildings(Long city_id){
-        return buildingRepository.findAllByCity_id(city_id);
+    public List<BuildingEntity> getAllCityBuildings(Integer cityID){
+        return buildingRepository.findAllByCityID(cityID);
     }
 
     @Override
@@ -29,8 +31,8 @@ public class BuildingServiceImpl implements BuildingService{
     }
 
     @Override
-    public String deleteBuilding(Long building_id){
-        buildingRepository.deleteById(building_id);
+    public String deleteBuilding(Integer buildingID){
+        buildingRepository.deleteById(buildingID);
         return "Deleted";
     }
 

@@ -20,21 +20,22 @@ public class BookingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long booking_id;
 
-    @Column(name = "user_id", length = 5, nullable = false)
-    private Long user_id;
+    @Column(name = "userID", length = 10, nullable = false)
+    private Integer userID;
 
-    @Column(name = "city_id", length = 5, nullable = false)
-    private Long city_id;
+    @Column(name = "cityID", length = 10, nullable = false)
+    private Integer cityID;
 
-    @Column(name = "building_id", length = 5, nullable = false)
-    private Long building_id;
+    @Column(name = "buildingID", length = 10, nullable = false)
+    private Integer buildingID;
 
-    @Column(name = "floor_id", length = 5, nullable = false)
-    private Long floor_id;
+    @Column(name = "floorID", length = 10, nullable = false)
+    private Integer floorID;
 
-    @Column(name = "desk_id", length = 5, nullable = false)
-    private Long desk_id;
+    @Column(name = "deskID", length = 10, nullable = false)
+    private Integer deskID;
 
-    @Column(name = "date", length = 15, nullable = false)
-    private Date booking_date;
+    @Column(name = "bookingDate", length = 15, nullable = false)
+    private String bookingDate;
+
 }

@@ -22,13 +22,14 @@ public class CityController {
         return new ResponseEntity(cityService.saveCityEntity(cityEntity), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping
     public List<CityEntity> fetchAllCities(){
-        return cityService.getAllCities().stream().map(p -> new CityEntity(p.getCity_id(), p.getCity_name())).collect(Collectors.toList());
+        return cityService.getAllCities().stream().map(p -> new CityEntity(p.getCityID(), p.getCity_name(), p.getCountry())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{city_id}")
-    public ResponseEntity deleteCity(@PathVariable Long city_id){
-        return new ResponseEntity(cityService.deleteCity(city_id), HttpStatus.OK);
+    @DeleteMapping("/{cityID}")
+    public ResponseEntity deleteCity(@PathVariable Integer cityID){
+        return new ResponseEntity(cityService.deleteCity(cityID), HttpStatus.OK);
     }
 }

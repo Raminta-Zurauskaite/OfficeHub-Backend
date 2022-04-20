@@ -9,11 +9,11 @@ public interface DeskService {
 
     DeskEntity saveDeskEntity(DeskEntity deskEntity);
 
-    List<DeskEntity> getAllFloorDesks(Long floor_id);
+    List<DeskEntity> getAllFloorDesks(Integer floorID);
 
     List<DeskEntity> getAllDesks();
 
-    Integer getDeskNumberById(Long desk_id);
+    Integer getDeskNumberById(Integer deskID);
 
-    String deleteDesk(Long desk_id);
+    String deleteDesk(Integer deskID);
 }

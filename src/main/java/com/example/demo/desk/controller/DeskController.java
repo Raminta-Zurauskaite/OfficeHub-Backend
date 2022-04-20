@@ -22,18 +22,19 @@ public class DeskController {
         return new ResponseEntity(deskService.saveDeskEntity(deskEntity), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{floor_id}")
-    public List<DeskEntity> fetchFloorDesks(@PathVariable Long floor_id){
-        return deskService.getAllFloorDesks(floor_id).stream().map(p -> new DeskEntity(p.getDesk_id(), p.getFloor_id(), p.getDesk_number())).collect(Collectors.toList());
+    @CrossOrigin
+    @GetMapping("/{floorID}")
+    public List<DeskEntity> fetchFloorDesks(@PathVariable Integer floorID){
+        return deskService.getAllFloorDesks(floorID).stream().map(p -> new DeskEntity(p.getDeskID(), p.getFloorID(), p.getDesk_number())).collect(Collectors.toList());
     }
 
     @GetMapping
     public List<DeskEntity> fetchAllDesks(){
-        return deskService.getAllDesks().stream().map(p -> new DeskEntity(p.getDesk_id(), p.getFloor_id(), p.getDesk_number())).collect(Collectors.toList());
+        return deskService.getAllDesks().stream().map(p -> new DeskEntity(p.getDeskID(), p.getFloorID(), p.getDesk_number())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("{/floor_id}")
-    public ResponseEntity deleteDesk(@PathVariable Long floor_id){
-        return new ResponseEntity(deskService.deleteDesk(floor_id), HttpStatus.OK);
+    @DeleteMapping("/{deskID}")
+    public ResponseEntity deleteDesk(@PathVariable Integer deskID){
+        return new ResponseEntity(deskService.deleteDesk(deskID), HttpStatus.OK);
     }
 }

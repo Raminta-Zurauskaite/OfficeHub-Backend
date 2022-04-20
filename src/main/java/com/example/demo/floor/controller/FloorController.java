@@ -22,18 +22,19 @@ public class FloorController {
         return new ResponseEntity(floorService.saveFloorEntity(floorEntity), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{building_id}")
-    public List<FloorEntity> fetchBuildingFloors(@PathVariable Long building_id){
-        return floorService.getAllBuildingFloors(building_id).stream().map(p -> new FloorEntity(p.getFloor_id(), building_id, p.getFloor_number())).collect(Collectors.toList());
+    @CrossOrigin
+    @GetMapping("/{buildingID}")
+    public List<FloorEntity> fetchBuildingFloors(@PathVariable Integer buildingID){
+        return floorService.getAllBuildingFloors(buildingID).stream().map(p -> new FloorEntity(p.getFloorID(), buildingID, p.getFloorName())).collect(Collectors.toList());
     }
 
     @GetMapping
     public List<FloorEntity> fetchAllFloors() {
-        return floorService.getAllFloors().stream().map(p -> new FloorEntity(p.getFloor_id(), p.getBuilding_id(), p.getFloor_number())).collect(Collectors.toList());
+        return floorService.getAllFloors().stream().map(p -> new FloorEntity(p.getFloorID(), p.getBuildingID(), p.getFloorName())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{floor_id}")
-    public ResponseEntity deleteFloor(@PathVariable Long floor_id){
-        return new ResponseEntity(floorService.deleteFloor(floor_id), HttpStatus.OK);
+    @DeleteMapping("/{floorID}")
+    public ResponseEntity deleteFloor(@PathVariable Integer floorID){
+        return new ResponseEntity(floorService.deleteFloor(floorID), HttpStatus.OK);
     }
 }

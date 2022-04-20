@@ -23,18 +23,19 @@ public class BuildingController {
         return new ResponseEntity(buildingService.saveBuildingEntity(buildingEntity), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{city_id}")
-    public List<BuildingEntity> fetchCityBuildings(@PathVariable Long city_id){
-        return buildingService.getAllCityBuildings(city_id).stream().map(p -> new BuildingEntity(p.getBuilding_id(), city_id, p.getAddress())).collect(Collectors.toList());
+    @CrossOrigin
+    @GetMapping("/{cityID}")
+    public List<BuildingEntity> fetchCityBuildings(@PathVariable Integer cityID){
+        return buildingService.getAllCityBuildings(cityID).stream().map(p -> new BuildingEntity(p.getBuildingID(), p.getCityID(), p.getAddress(), p.getBuildingName())).collect(Collectors.toList());
     }
 
     @GetMapping
     public List<BuildingEntity> fetchAllBuildings() {
-        return buildingService.getAllBuildings().stream().map(p -> new BuildingEntity(p.getBuilding_id(), p.getCity_id(), p.getAddress())).collect(Collectors.toList());
+        return buildingService.getAllBuildings().stream().map(p -> new BuildingEntity(p.getBuildingID(), p.getCityID(), p.getAddress(), p.getBuildingName())).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{building_id}")
-    public ResponseEntity deleteBuilding(@PathVariable Long building_id){
-        return new ResponseEntity(buildingService.deleteBuilding(building_id), HttpStatus.OK);
+    @DeleteMapping("/{buildingID}")
+    public ResponseEntity deleteBuilding(@PathVariable Integer buildingID){
+        return new ResponseEntity(buildingService.deleteBuilding(buildingID), HttpStatus.OK);
     }
 }

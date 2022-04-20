@@ -2,6 +2,7 @@ package com.example.demo.user.service;
 
 import com.example.demo.user.entity.UserEntity;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface UserService {
@@ -9,5 +10,5 @@ public interface UserService {
 
     List<UserEntity> getAllUsers();
 
-    String deleteUser(Long user_id);
+    String deleteUser(Integer userID);
 }

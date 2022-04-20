@@ -1,6 +1,7 @@
 package com.example.demo.booking.service;
 
 import com.example.demo.booking.entity.BookingEntity;
+import com.example.demo.booking.entity.UserBookings;
 
 import java.util.Date;
 import java.util.List;
@@ -9,11 +10,13 @@ public interface BookingService {
 
     BookingEntity saveBookingEntity(BookingEntity bookingEntity);
 
-    List<BookingEntity> getAllFloorAndDateBookings(Long floor_id, Date booking_date);
+    List<BookingEntity> getAllFloorAndDateBookings(Integer floorID, String bookingDate);
 
-    List<BookingEntity> getAllUserBookings(Long user_id);
+    List<UserBookings> findAllByUserID(Integer userID);
 
     List<BookingEntity> getAllBookings();
 
-    String deleteBooking(Long booking_id);
+    String deleteBooking(Integer bookingID);
+
+
 }

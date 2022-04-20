@@ -2,17 +2,19 @@ package com.example.demo.desk.service;
 
 import com.example.demo.desk.entity.DeskEntity;
 import com.example.demo.desk.repository.DeskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DeskServiceImpl implements DeskService{
 
-    @Autowired
-    private DeskRepository deskRepository;
+    private final DeskRepository deskRepository;
+
+    public DeskServiceImpl(DeskRepository deskRepository) {
+        this.deskRepository = deskRepository;
+    }
 
     @Override
     public DeskEntity saveDeskEntity(DeskEntity deskEntity){
@@ -20,8 +22,8 @@ public class DeskServiceImpl implements DeskService{
     }
 
     @Override
-    public List<DeskEntity> getAllFloorDesks(Long floor_id){
-        return deskRepository.findAllByFloor_id(floor_id);
+    public List<DeskEntity> getAllFloorDesks(Integer floorID){
+        return deskRepository.findAllByFloorID(floorID);
     }
 
     @Override
@@ -30,13 +32,13 @@ public class DeskServiceImpl implements DeskService{
     }
 
     @Override
-    public Integer getDeskNumberById(Long desk_id){
-        return deskRepository.getDeskNumberById(desk_id);
+    public Integer getDeskNumberById(Integer deskID){
+        return deskRepository.getDeskNumberById(deskID);
     }
 
     @Override
-    public String deleteDesk(Long floor_id){
-        deskRepository.deleteById(floor_id);
+    public String deleteDesk(Integer floorID){
+        deskRepository.deleteById(floorID);
         return "Deleted";
     }
 }
