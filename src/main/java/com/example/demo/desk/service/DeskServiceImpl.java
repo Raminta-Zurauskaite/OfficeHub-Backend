@@ -1,7 +1,9 @@
 package com.example.demo.desk.service;
 
 import com.example.demo.desk.entity.DeskEntity;
+import com.example.demo.desk.entity.FloorDesks;
 import com.example.demo.desk.repository.DeskRepository;
+import com.example.demo.desk.repository.FloorDesksRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,9 +13,11 @@ import java.util.List;
 public class DeskServiceImpl implements DeskService{
 
     private final DeskRepository deskRepository;
+    private final FloorDesksRepository floorDesksRepository;
 
-    public DeskServiceImpl(DeskRepository deskRepository) {
+    public DeskServiceImpl(DeskRepository deskRepository, FloorDesksRepository floorDesksRepository) {
         this.deskRepository = deskRepository;
+        this.floorDesksRepository = floorDesksRepository;
     }
 
     @Override
@@ -22,8 +26,8 @@ public class DeskServiceImpl implements DeskService{
     }
 
     @Override
-    public List<DeskEntity> getAllFloorDesks(Integer floorID){
-        return deskRepository.findAllByFloorID(floorID);
+    public List<FloorDesks> getAllFloorDesksByFloorID(Integer floorID){
+        return floorDesksRepository.findAllFloorDesksByFloorID(floorID);
     }
 
     @Override

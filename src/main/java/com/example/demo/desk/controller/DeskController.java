@@ -1,6 +1,7 @@
 package com.example.demo.desk.controller;
 
 import com.example.demo.desk.entity.DeskEntity;
+import com.example.demo.desk.entity.FloorDesks;
 import com.example.demo.desk.service.DeskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,8 +25,8 @@ public class DeskController {
 
     @CrossOrigin
     @GetMapping("/{floorID}")
-    public List<DeskEntity> fetchFloorDesks(@PathVariable Integer floorID){
-        return deskService.getAllFloorDesks(floorID).stream().map(p -> new DeskEntity(p.getDeskID(), p.getFloorID(), p.getDesk_number())).collect(Collectors.toList());
+    public List<FloorDesks> fetchFloorDesks(@PathVariable Integer floorID){
+        return deskService.getAllFloorDesksByFloorID(floorID).stream().map(p -> new FloorDesks(p.getDesk_id(), p.getDesk_number(), p.getDesk_coordinates())).collect(Collectors.toList());
     }
 
     @GetMapping
