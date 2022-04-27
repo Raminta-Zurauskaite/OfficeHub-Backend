@@ -19,6 +19,6 @@ public class DeskCoordinates {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer floorDeskID;
 
-    @Column(name = "coordinates", length = 50, nullable = false)
+    @Column(name = "coordinates", length = 100, nullable = false)
     private String coordinates;
 }
